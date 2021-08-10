@@ -12,7 +12,8 @@ terraform {
 provider "docker" {}
 
 resource "random_string" "random" {
-  length  = 4
+  count   = 2
+  length  = 8
   special = false
   upper   = false
 }
@@ -22,7 +23,8 @@ resource "docker_image" "nodered_image" {
 }
 
 resource "docker_container" "nodered_container" {
-  name  = join("-", ["nodered", random_string.random.result])
+  count = 2
+  name  = join("-", ["nodered", random_string.random[count.index].result])
   image = docker_image.nodered_image.latest
   ports {
     internal = 1880
@@ -30,12 +32,13 @@ resource "docker_container" "nodered_container" {
   }
 }
 
-output "ip-address" {
-  value       = join(":", [docker_container.nodered_container.ip_address, docker_container.nodered_container.ports[0].external])
-  description = "IP address and external port of the container"
+# splat changes output to a list of elements instead of single (see count above)
+output "container-name" {
+  value       = docker_container.nodered_container[*].name
+  description = "Name of the container"
 }
 
-output "container-name" {
-  value       = docker_container.nodered_container.name
-  description = "Name of the container"
+output "ip-address" {
+  value       = [for i in docker_container.nodered_container[*] : join(":", [i.ip_address], i.ports[*]["external"])]
+  description = "IP address and external port of the container"
 }
