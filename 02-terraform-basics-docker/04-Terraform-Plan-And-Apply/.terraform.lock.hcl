@@ -2,7 +2,8 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/kreuzwerker/docker" {
-  version = "2.15.0"
+  version     = "2.15.0"
+  constraints = "~> 2.15"
   hashes = [
     "h1:NEBNtKNukqr6qk5vWu8Xx/nHBVNNdlty0hrFG76K7AE=",
     "zh:0241e5c7b66c14aa54e367dfe380fbde8388d3254cbe8a70717c12f71897e82b",
@@ -18,22 +19,5 @@ provider "registry.terraform.io/kreuzwerker/docker" {
     "zh:d9f3eb7ef8f256eb9148d72bd4a00e34f3be5570484598e26b603cbdc5eed923",
     "zh:ef573f1e0f000127fa9f569c8ee320f03ba1d302a6fbf9aac8300efa6fc6f4b2",
     "zh:ef7e246b4205202161b4119c10a1282f74243e029508184132731f9f6f6d9f4c",
-  ]
-}
-
-provider "registry.terraform.io/terraform-providers/docker" {
-  version = "2.7.2"
-  hashes = [
-    "h1:06EZRBUCgKAVbtwOtE2I0giBUcpgENy+NUUMM88+siY=",
-    "zh:23dfb4e5f3bcac95cb3fae489dd23caf8a433506198f56600a0e68982ebf5ea5",
-    "zh:2b9c30e769c46861b18ff710b853c3f4ceef424f5d382e8c7de2d5827e2f8a91",
-    "zh:35e21ecd49c7d7910ec7c395c78903ca24a3619a0516b711db58859842edcc0d",
-    "zh:5c9f372d79ad2fe597fd1811014d3c6dcc2bfb45e61190fea8dd125f91241e10",
-    "zh:5fcdd4c2525b6221b41930dde6f764e9daf7ffc850b5a9eaf382a273d6f81967",
-    "zh:a0303b252898a5d92740570affaabe8d6a4d9f33f2de700449ef963244210ed4",
-    "zh:c8770467dd7918f9ed2eb13dcf244713f153ffd85f0512d808f4c0f85a6d9df6",
-    "zh:d2e252a5841215475779ae8a94ff56b9f37c114cbef9a0e2bcd0b4fa3fd70f39",
-    "zh:f34c319ef955b3477514ba29b0855ddd0f673fd362bd4b57dec981db4c903f9f",
-    "zh:f5b796a0f979600af0b634339a35e7eff680168d43550c44cdcfebd1863c1f48",
   ]
 }
